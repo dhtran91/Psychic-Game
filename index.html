@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Word Guess Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+    <p>Guess what letter I am thinking of ...</p>
+    <p>Wins: <span id="win"></span></p>
+    <p>Losses: <span id="loss"></span></p>
+    <p>Guesses Left: <span id="numOfGuesses"></span></p>
+    <p>Your Guesses so far: <span id="guesses"></span></p>
+    <form>
+            <input type="text" id="userInput" name="userInput">
+            <button onclick="play()" value="To Play"></button>
+    </form>
+    
+    <script src="assets/javascript/game.js"></script>
+</body>
+</html>
