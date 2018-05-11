@@ -12,20 +12,22 @@ var win = 0;
 var loss = 0;
 var guesses = [];
 
+// document.getElementById("numOfGuesses").innerHTML = numOfGuesses;
+// document.getElementById("guesses").innerHTML = guesses;
+// document.getElementById("win").innerHTML = win;
+// document.getElementById("loss").innerHTML = loss;
 
-document.getElementById("numOfGuesses").innerHTML = numOfGuesses;
-document.getElementById("guesses").innerHTML = guesses;
-document.getElementById("win").innerHTML = win;
-document.getElementById("loss").innerHTML = loss;
-
-    
+  
+var keyStroke;
+document.addEventListener('keypress', (event) => {
+    keyStroke = event.key;
+    alert("You pressed " + keyStroke);
+});
 
 while (numOfGuesses !== 0) {
 
-    userInput = prompt("What letter?");
-    console.log(userInput);
-    if (alphabet[rand] === userInput) {
-        console.log("You win");
+    if (alphabet[rand] === keyStroke) {
+        alert("You win");
         win++;
         numOfGuesses = 0;
     } 
@@ -36,11 +38,10 @@ while (numOfGuesses !== 0) {
         loss++;
     }
     }
-    console.log(win);
-    console.log(loss);
-    console.log(numOfGuesses);
+    // console.log(win);
+    // console.log(loss);
+    // console.log(numOfGuesses);
 }
-
 
 
 

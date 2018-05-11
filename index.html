@@ -1,24 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
 <body>
+    <h1>Psychic Game</h1>
     <p>Guess what letter I am thinking of ...</p>
-    <p>Wins: <span id="win"></span></p>
-    <p>Losses: <span id="loss"></span></p>
-    <p>Guesses Left: <span id="numOfGuesses"></span></p>
-    <p>Your Guesses so far: <span id="guesses"></span></p>
-    <form>
-            <input type="text" id="userInput" name="userInput">
-            <button onclick="play()" value="To Play"></button>
-    </form>
-    
-    <script src="assets/javascript/game.js"></script>
+    <p>Wins:
+        <span id="win"></span>
+    </p>
+    <p>Losses:
+        <span id="loss"></span>
+    </p>
+    <p>Guesses Left:
+        <span id="numOfGuesses"></span>
+    </p>
+    <p>Your Guesses so far:
+        <span id="guesses"></span>
+    </p>
+
+    <p>The letter I was guessing was : <span id="correctLetter"></span></p>
+    <script>
+
+
+        //Array that consist of 26 characters ranging from index 0 - 25
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+            "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        //Generate a number between 0 - 25
+        var rand = Math.floor(Math.random() * 25);
+
+        //Just to see what the random letter is
+        console.log(alphabet[rand]);
+
+
+        //Setting variables
+        var numOfGuesses = 10;
+        var win = 0;
+        var loss = 0;
+        var guesses;
+
+        var winText = document.getElementById("win");
+        var lossText = document.getElementById("loss");
+        var numOfGuessesText = document.getElementById("numOfGuesses");
+        var guessText = document.getElementById("guesses");
+        var correctLetterText = document.getElementById("correctLetter");
+
+        winText.textContent = win;
+        lossText.textContent = loss;
+        numOfGuessesText.textContent = numOfGuesses;
+
+        document.onkeypress = function (event) {
+
+            var keyPressed = event.key;
+            guessText.textContent += keyPressed + " ";
+            numOfGuesses--;
+            numOfGuessesText.textContent = numOfGuesses;
+            correctLetterText.textContent = "";
+
+            if (numOfGuesses >= 0 && alphabet[rand] === keyPressed) {
+                win++;
+                winText.textContent = win;
+                numOfGuesses = 10;
+                guessText.textContent = "";
+                correctLetterText.textContent = alphabet[rand];
+            }
+            else if (numOfGuesses !== 0) {
+
+            }
+            else if (numOfGuesses === 0) {
+                loss++;
+                lossText.textContent = loss;
+                numOfGuesses = 10;
+                guessText.textContent = "";
+                correctLetterText.textContent = alphabet[rand];
+            }
+
+        }
+
+
+
+
+
+
+    </script>
+    <!-- <script src="assets/javascript/game.js">
+        
+    </script> -->
 </body>
+
 </html>
